@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.13" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OA_WEB.Common\OA_WEB.Common.csproj" />
+    <ProjectReference Include="..\OA_WEB.DataAccess\OA_WEB.DataAccess.csproj" />
+    <ProjectReference Include="..\OA_WEB.Service\OA_WEB.Service.csproj" />
+  </ItemGroup>
+
+</Project>
