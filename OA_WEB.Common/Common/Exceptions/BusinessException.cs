@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace OA_WEB.Common.Exceptions
 {
@@ -19,6 +15,7 @@ namespace OA_WEB.Common.Exceptions
         }
 
         #region Constructors
+
         /// <summary>
         /// Create custom business exception
         /// </summary>
@@ -46,6 +43,7 @@ namespace OA_WEB.Common.Exceptions
         {
             _parameters = parameters;
         }
-        #endregion
+
+        #endregion Constructors
     }
 }

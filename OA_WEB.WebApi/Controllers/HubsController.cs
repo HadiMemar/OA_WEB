@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
 using OA_WEB.DataAccess.Models;
-using OA_WEB.Repository.UnitOfWork;
 using OA_WEB.Service.Interface;
 
 namespace OA_WEB.WebApi.Controllers
@@ -28,15 +20,15 @@ namespace OA_WEB.WebApi.Controllers
         {
             var results = _unitOfWork.Hubs.GetAll();
             return Ok(results);
-
         }
+
         [HttpGet("{id}")]
         public IActionResult GetHubById(int id)
         {
             var result = _unitOfWork.Hubs.GetHubDetailsById(id);
             return Ok(result);
-
         }
+
         [HttpPost]
         public IActionResult AddHub([FromBody] Hub hub)
         {
@@ -44,6 +36,7 @@ namespace OA_WEB.WebApi.Controllers
             _unitOfWork.Complete();
             return Ok(result);
         }
+
         [HttpPut("{id}")]
         public IActionResult EditHub(int id, [FromBody] Hub hub)
         {
@@ -60,6 +53,7 @@ namespace OA_WEB.WebApi.Controllers
             _unitOfWork.Complete();
             return Ok(result);
         }
+
         [HttpDelete("{id}")]
         public IActionResult DeleteHub(int id)
         {

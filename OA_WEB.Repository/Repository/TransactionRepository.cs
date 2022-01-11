@@ -5,11 +5,7 @@ using OA_WEB.Repository.AppDbContext;
 using OA_WEB.Repository.UnitOfWork;
 using OA_WEB.Service.Interface;
 using OA_WEB.Service.Interface.Repository;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-
 
 namespace OA_WEB.Repository.Repository
 {
@@ -18,6 +14,7 @@ namespace OA_WEB.Repository.Repository
         public TransactionRepository(ApplicationDbContext context) : base(context)
         {
         }
+
         public Transaction GetTransById(int id)
         {
             var result = this._context.Set<Transaction>().Where(t => t.Id == id).AsNoTracking().FirstOrDefault();
@@ -36,7 +33,6 @@ namespace OA_WEB.Repository.Repository
             update(qty, t.TargetType, t.TargetAttribute, t.TargetId);
 
             return true;
-
         }
 
         private void update(double quantity, string targetType, string targetAttribute, int targetId)
@@ -51,4 +47,3 @@ namespace OA_WEB.Repository.Repository
         }
     }
 }
-

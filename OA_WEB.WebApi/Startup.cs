@@ -1,21 +1,15 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using OA_WEB.Repository.AppDbContext;
 using OA_WEB.Repository.Repository;
 using OA_WEB.Repository.UnitOfWork;
 using OA_WEB.Service.Interface;
 using OA_WEB.Service.Interface.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace OA_WEB.WebApi
 {
@@ -31,7 +25,6 @@ namespace OA_WEB.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -47,6 +40,7 @@ namespace OA_WEB.WebApi
                 );
 
             #region Repositories
+
             services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddTransient<IItemRepository, ItemRepository>();
             services.AddTransient<ICustomerRepository, CustomerRepository>();
@@ -54,7 +48,8 @@ namespace OA_WEB.WebApi
             services.AddTransient<IHubRepository, HubRepository>();
             services.AddTransient<IPORepository, PORepository>();
             services.AddTransient<ISORepository, SORepository>();
-            #endregion
+
+            #endregion Repositories
 
             services.AddTransient<IUnitOfWork, UnitOfWorks>();
         }

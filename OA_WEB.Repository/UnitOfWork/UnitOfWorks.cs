@@ -2,17 +2,13 @@
 using OA_WEB.Repository.Repository;
 using OA_WEB.Service.Interface;
 using OA_WEB.Service.Interface.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 
 namespace OA_WEB.Repository.UnitOfWork
 {
     public class UnitOfWorks : IUnitOfWork
     {
         private readonly ApplicationDbContext _context;
+
         public UnitOfWorks(ApplicationDbContext context)
         {
             _context = context;
@@ -25,6 +21,7 @@ namespace OA_WEB.Repository.UnitOfWork
             StockHubTransactions = new StockHubTransRepository(_context);
             Hubs = new HubRepository(_context);
         }
+
         public IItemRepository Items { get; private set; }
         public ICustomerRepository Customers { get; private set; }
         public ITargetRepo Targets { get; private set; }
@@ -34,10 +31,12 @@ namespace OA_WEB.Repository.UnitOfWork
         public IStockHubTransRepository StockHubTransactions { get; private set; }
 
         public IHubRepository Hubs { get; private set; }
+
         public int Complete()
         {
             return _context.SaveChanges();
         }
+
         public void Dispose()
         {
             _context.Dispose();

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace OA_WEB.Common
 {
@@ -16,7 +13,7 @@ namespace OA_WEB.Common
         [JsonIgnore]
         /// <summary>
         /// Gets or sets the user who is performing the delete action
-        /// </summary> 
+        /// </summary>
         string DeletedBy { get; set; }
 
         [JsonIgnore]

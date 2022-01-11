@@ -1,13 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using OA_WEB.DataAccess.Models;
-using OA_WEB.Repository.UnitOfWork;
 using OA_WEB.Service.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 
 namespace OA_WEB.WebApi.Controllers
 {
@@ -16,24 +9,26 @@ namespace OA_WEB.WebApi.Controllers
     public class ItemController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
+
         public ItemController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
+
         [HttpGet]
         public IActionResult GetItems()
         {
             var results = _unitOfWork.Items.GetAll();
             return Ok(results);
-
         }
+
         [HttpGet("{id}")]
         public IActionResult GetItemById(int id)
         {
             var result = _unitOfWork.Items.GetById(id);
             return Ok(result);
-
         }
+
         [HttpPost]
         public IActionResult AddItem([FromBody] Item item)
         {
@@ -41,6 +36,7 @@ namespace OA_WEB.WebApi.Controllers
             _unitOfWork.Complete();
             return Ok(result);
         }
+
         [HttpPut("{id}")]
         public IActionResult EditItem(int id, [FromBody] Item item)
         {
@@ -57,6 +53,7 @@ namespace OA_WEB.WebApi.Controllers
             _unitOfWork.Complete();
             return Ok(result);
         }
+
         [HttpDelete("{id}")]
         public IActionResult DeleteItem(int id)
         {

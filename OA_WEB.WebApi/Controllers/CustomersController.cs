@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
 using OA_WEB.DataAccess.Models;
-using OA_WEB.Repository.UnitOfWork;
 using OA_WEB.Service.Interface;
 
 namespace OA_WEB.WebApi.Controllers
@@ -16,23 +9,24 @@ namespace OA_WEB.WebApi.Controllers
     public class CustomersController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
+
         public CustomersController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
+
         [HttpGet]
         public IActionResult GetCustomers()
         {
             var results = _unitOfWork.Customers.GetAll();
             return Ok(results);
-
         }
+
         [HttpGet("{id}")]
         public IActionResult GetCustomerById(int id)
         {
             var results = _unitOfWork.Customers.GetById(id);
             return Ok(results);
-
         }
 
         [HttpPost]
@@ -42,6 +36,7 @@ namespace OA_WEB.WebApi.Controllers
             _unitOfWork.Complete();
             return Ok(result);
         }
+
         [HttpPut("{id}")]
         public IActionResult EditCustomer(int id, [FromBody] Customer customer)
         {
@@ -58,6 +53,7 @@ namespace OA_WEB.WebApi.Controllers
             _unitOfWork.Complete();
             return Ok(result);
         }
+
         [HttpDelete("{id}")]
         public IActionResult DeleteCustomer(int id)
         {
@@ -66,5 +62,4 @@ namespace OA_WEB.WebApi.Controllers
             return Ok(result);
         }
     }
-
 }

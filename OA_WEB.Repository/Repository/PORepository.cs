@@ -6,9 +6,7 @@ using OA_WEB.Repository.AppDbContext;
 using OA_WEB.Repository.UnitOfWork;
 using OA_WEB.Service.Interface.Repository;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace OA_WEB.Repository.Repository
 {
@@ -16,8 +14,8 @@ namespace OA_WEB.Repository.Repository
     {
         public PORepository(ApplicationDbContext context) : base(context)
         {
-
         }
+
         public PO GetPODetails(int id)
         {
             var result = this._context.POs.AsNoTracking().Where(p => p.Id == id).Include(p => p.LeafTransactions).SingleOrDefault();
@@ -27,7 +25,8 @@ namespace OA_WEB.Repository.Repository
             }
             return result;
         }
-        public PO AddPO(PODTO poDto)
+
+        public PO AddPO(POSODTO poDto)
         {
             var entries = poDto.Entries;
             if (entries == null)
@@ -40,12 +39,8 @@ namespace OA_WEB.Repository.Repository
                 Direction = poDto.Direction,
                 TargetId = poDto.TargetId,
                 HubId = poDto.HubId,
-                StockAttribute = poDto.StockAttribute,
-                AccountType = poDto.AccountType,
-                AccountAttribute = poDto.AccountAttribute,
             };
-            newPo.CreateLeafTransactions(entries);
-
+            newPo.CreateTransactionForItems(entries);
 
             var x = _context.Set<PO>().Add(newPo);
 

@@ -1,19 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OA_WEB.Common.Exceptions
 {
     public class BaseException : Exception
     {
         #region Fields
+
         private string _code;
         private string _message;
-        #endregion
+
+        #endregion Fields
 
         #region Properties
+
         public string Code
         {
             get
@@ -21,13 +20,15 @@ namespace OA_WEB.Common.Exceptions
                 return this._code;
             }
         }
-        #endregion
+
+        #endregion Properties
 
         #region Constructors
+
         public BaseException()
         {
-
         }
+
         /// <summary>
         /// Create custom exception
         /// </summary>
@@ -47,6 +48,7 @@ namespace OA_WEB.Common.Exceptions
         {
             this._code = code;
         }
-        #endregion
+
+        #endregion Constructors
     }
 }

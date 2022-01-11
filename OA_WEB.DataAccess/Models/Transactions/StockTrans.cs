@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace OA_WEB.DataAccess.Models.Transactions
+﻿namespace OA_WEB.DataAccess.Models.Transactions
 {
     public class StockTrans : Transaction
     {
@@ -12,14 +7,15 @@ namespace OA_WEB.DataAccess.Models.Transactions
         }
 
         public int Price { get; set; }
+
         public double GetAmount()
         {
             return this.Quantity * Price;
         }
+
         public double GetQty()
         {
             return this.Quantity;
         }
-
     }
 }

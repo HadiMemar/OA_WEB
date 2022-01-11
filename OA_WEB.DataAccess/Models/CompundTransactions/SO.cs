@@ -1,38 +1,34 @@
-﻿using System;
+﻿using OA_WEB.DataAccess.Models.Transactions;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
-using OA_WEB.DataAccess.Models.Transactions;
 
 namespace OA_WEB.DataAccess.Models.CompundTransactions
 {
     public class SO : CompoundTransaction
     {
         public int HubId { get; set; }
-        public String StockAttribute { get; set; }
-        public String AccountType { get; set; }
-        public String AccountAttribute { get; set; }
+
         public SO()
         {
-
+            this.Direction = true;
         }
 
-        public void CreateLeafTransactions(List<ItemEntry> entries)
+        public void CreateTransactionForItems(List<ItemEntry> entries)
         {
             Double total = 0;
             entries.ForEach(i =>
             {
+                StockHubTrans shtop = new StockHubTrans("OnPO") { HubId = HubId, Price = i.Price, TargetId = i.ItemId, Direction = false, Quantity = i.Qty, };
+                total += shtop.GetAmount();
+                StockHubTrans shtoh = new StockHubTrans("OnHand")
+                { HubId = HubId, Price = i.Price, TargetId = i.ItemId, Direction = true, Quantity = i.Qty, };
 
-                StockHubTrans aStockHubTrans = new StockHubTrans(StockAttribute) { HubId = HubId, Price = i.Price, TargetId = i.ItemId, Direction = Direction, Quantity = i.Qty, };
-                total += aStockHubTrans.GetAmount();
-                LeafTransactions.Add(aStockHubTrans);
-
+                LeafTransactions.Add(shtop);
+                LeafTransactions.Add(shtoh);
             });
             Total = total;
-            Transaction accountTrans = new AccountTransaction(AccountType, AccountAttribute) { TargetId = TargetId, Direction = Direction, Quantity = total };
+            Transaction accountTrans = new AccountTransaction("Customers", "OnSO") { TargetId = TargetId, Direction = false, Quantity = total };
             LeafTransactions.Add(accountTrans);
         }
-        
     }
 }

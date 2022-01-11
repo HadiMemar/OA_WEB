@@ -1,9 +1,5 @@
 ﻿using OA_WEB.Service.Interface.Repository;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 
 namespace OA_WEB.Service.Interface
 {
@@ -17,7 +13,6 @@ namespace OA_WEB.Service.Interface
         ISORepository SOs { get; }
         IStockHubTransRepository StockHubTransactions { get; }
         IHubRepository Hubs { get; }
-
 
         int Complete();
     }

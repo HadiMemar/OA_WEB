@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace OA_WEB.DataAccess.Models
 {
@@ -11,15 +7,18 @@ namespace OA_WEB.DataAccess.Models
     {
         [Key]
         public int Id { get; set; }
+
         public DateTime Date { get; set; } = DateTime.Now;
         public virtual bool Direction { get; set; } = true;
         public double Quantity { get; set; } = 0;
         public string TargetType { get; set; }
         public string TargetAttribute { get; set; }
         public int TargetId { get; set; }
+
         [MaxLength(20)]
         public string Unit { get; set; }
     }
+
     public partial class Transaction
     {
         public Transaction(string TargetType, string TargetAttribute)
@@ -27,6 +26,7 @@ namespace OA_WEB.DataAccess.Models
             this.TargetType = TargetType;
             this.TargetAttribute = TargetAttribute;
         }
+
         //public virtual bool Post()
         //{
         //    double qty=Quantity;
@@ -50,11 +50,10 @@ namespace OA_WEB.DataAccess.Models
         //}
         ////public void UnPost()
         ////{
-        ////    if (Direction)//true for income 
+        ////    if (Direction)//true for income
         ////        Quantity = -Quantity;
         ////    this.Gateway.GetTargetObjectAndUpdate(TargetId, Quantity);
 
         ////}
-
     }
 }

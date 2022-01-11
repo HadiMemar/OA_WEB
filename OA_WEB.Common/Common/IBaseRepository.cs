@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace OA_WEB.Common
+﻿namespace OA_WEB.Common
 {
     public interface IBaseRepository
     {
-        
     }
 }

@@ -5,11 +5,11 @@ namespace OA_WEB.Service.Interface.Repository
 {
     public interface IPORepository : IGenericRepository<PO>
     {
-        PO AddPO(PODTO po);
-
-        PO Post(int id);
+        PO AddPO(POSODTO po);
 
         PO GetPODetails(int id);
+
+        PO Post(int id);
 
         //PO PreparePO(int id, List<ItemEntry> itemEntries);
     }

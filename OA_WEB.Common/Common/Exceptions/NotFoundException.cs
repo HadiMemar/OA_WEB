@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OA_WEB.Common.Exceptions
 {
     public class NotFoundException : BaseException
     {
         #region Private Variables
+
         private string _message = String.Empty;
         private Dictionary<string, string> _parameters;
 
@@ -19,9 +17,11 @@ namespace OA_WEB.Common.Exceptions
                 return _parameters;
             }
         }
-        #endregion
+
+        #endregion Private Variables
 
         #region Constructors
+
         /// <summary>
         /// Create custom not found exception
         /// </summary>
@@ -51,6 +51,7 @@ namespace OA_WEB.Common.Exceptions
         {
             _parameters = parameters;
         }
-        #endregion
+
+        #endregion Constructors
     }
 }

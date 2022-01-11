@@ -1,8 +1,5 @@
-﻿
-
-namespace OA_WEB.DataAccess.Models
+﻿namespace OA_WEB.DataAccess.Models
 {
-
     public abstract partial class Target
     {
         /// <summary>
@@ -10,6 +7,7 @@ namespace OA_WEB.DataAccess.Models
         /// </summary>
         /// <returns></returns>
         public abstract int GetTargetId();
+
         /// <summary>
         /// Updates Target Attrtibutes
         /// </summary>
@@ -17,6 +15,7 @@ namespace OA_WEB.DataAccess.Models
         /// <param name="attribute"></param>
         /// <returns></returns>
         public abstract bool Update(double quantity, string attribute);
+
         /// <summary>
         /// Prints the Target data
         /// </summary>

@@ -3,11 +3,7 @@ using OA_WEB.Common.Exceptions;
 using OA_WEB.DataAccess.Models;
 using OA_WEB.Repository.AppDbContext;
 using OA_WEB.Service.Interface.Repository;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-
 
 namespace OA_WEB.Repository.Repository
 {
@@ -15,8 +11,8 @@ namespace OA_WEB.Repository.Repository
     {
         public HubRepository(ApplicationDbContext context) : base(context)
         {
-
         }
+
         public Hub GetHubDetailsById(int id)
         {
             var result = this._context.Hubs.Where(h => h.Id == id).Include(h => h.Items).AsNoTracking().SingleOrDefault();
@@ -25,7 +21,6 @@ namespace OA_WEB.Repository.Repository
                 throw new NotFoundException("Hub not found", "403");
             }
             return result;
-
         }
     }
 }

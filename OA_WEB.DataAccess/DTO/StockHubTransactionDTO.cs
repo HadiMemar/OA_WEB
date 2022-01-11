@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace OA_WEB.DataAccess.DTO
+﻿namespace OA_WEB.DataAccess.DTO
 {
     public class StockHubTransactionDTO : TransactionDTO
     {

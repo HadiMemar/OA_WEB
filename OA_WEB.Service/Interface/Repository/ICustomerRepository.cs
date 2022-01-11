@@ -1,6 +1,4 @@
-﻿
-
-using OA_WEB.DataAccess.Models;
+﻿using OA_WEB.DataAccess.Models;
 
 namespace OA_WEB.Service.Interface.Repository
 
